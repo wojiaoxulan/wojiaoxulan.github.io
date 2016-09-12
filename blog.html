@@ -31,13 +31,57 @@
           <hr>
         </div>
 
-<p>1. extern:关键字，放在变量或者函数之前，表示声明。但是不能对变量进行初始化，否则extern将失效。</p>
-<p>2. ：： :放在变量之前，表示访问全局变量。</p>
-<p>3. 引用不是对象，而是和对象进行绑定。一般来说，这种绑定是不可变的。</p>
-<p>4. const int &变量：常量引用，限制了引用对于绑定对象的操作可以绑定非常量，但是不能通过引用改变对象的值。</p>
-<p>5. 只能用指向常量的指针来指向常量，同时指向常量的指针也可以指向非常量。</p>
-<p>6. 常量指针： int *const 变量，指针指向的地址是只读的。</p>
-<p>7. 当变量的类型比较复杂时，从右往左进行分析。靠近变量名的修饰符对变量起直接作用。</p>
+<tr>
+			<td id="L34" class="blob-num js-line-number" style="font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace;color:rgba(0, 0, 0, 0.298039);text-align:right;vertical-align:top;">
+			</td>
+			<td id="LC34" class="blob-code blob-code-inner js-file-line" style="font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace;vertical-align:top;">
+				<strong>1. <span style="color:#E53333;">extern</span>:</strong>关键字，放在变量或者函数之前，表示声明。但是不能对变量进行初始化，否则extern将失效。&lt;/<span class="pl-ent" style="color:#63A35C;">p</span>&gt;
+			</td>
+		</tr>
+		<tr>
+			<td id="L35" class="blob-num js-line-number" style="font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace;color:rgba(0, 0, 0, 0.298039);text-align:right;vertical-align:top;">
+			</td>
+			<td id="LC35" class="blob-code blob-code-inner js-file-line" style="font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace;vertical-align:top;">
+				<strong>2. <span style="color:#E53333;">：：</span> :</strong>放在变量之前，表示访问全局变量。&lt;/<span class="pl-ent" style="color:#63A35C;">p</span>&gt;
+			</td>
+		</tr>
+		<tr>
+			<td id="L36" class="blob-num js-line-number" style="font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace;color:rgba(0, 0, 0, 0.298039);text-align:right;vertical-align:top;">
+			</td>
+			<td id="LC36" class="blob-code blob-code-inner js-file-line" style="font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace;vertical-align:top;">
+				<strong>3.</strong> 引用不是对象，而是和对象进行绑定。一般来说，这种绑定是不可变的。&lt;/<span class="pl-ent" style="color:#63A35C;">p</span>&gt;
+			</td>
+		</tr>
+		<tr>
+			<td id="L37" class="blob-num js-line-number" style="font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace;color:rgba(0, 0, 0, 0.298039);text-align:right;vertical-align:top;">
+			</td>
+			<td id="LC37" class="blob-code blob-code-inner js-file-line" style="font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace;vertical-align:top;">
+				<strong>4.</strong> <span style="color:#E53333;">const int&nbsp;</span><span class="pl-ii" style="color:#E53333;">&amp;</span><span style="color:#E53333;">变量</span>：常量引用，限制了引用对于绑定对象的操作可以绑定非常量，但是不能通过引用改变对象的值。&lt;/<span class="pl-ent" style="color:#63A35C;">p</span>&gt;
+			</td>
+		</tr>
+		<tr>
+			<td id="L38" class="blob-num js-line-number" style="font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace;color:rgba(0, 0, 0, 0.298039);text-align:right;vertical-align:top;">
+			</td>
+			<td id="LC38" class="blob-code blob-code-inner js-file-line" style="font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace;vertical-align:top;">
+				<strong>5.</strong> 只能用指向常量的指针来指向常量，同时指向常量的指针也可以指向非常量。&lt;/<span class="pl-ent" style="color:#63A35C;">p</span>&gt;
+			</td>
+		</tr>
+		<tr>
+			<td id="L39" class="blob-num js-line-number" style="font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace;color:rgba(0, 0, 0, 0.298039);text-align:right;vertical-align:top;">
+			</td>
+			<td id="LC39" class="blob-code blob-code-inner js-file-line" style="font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace;vertical-align:top;">
+				<strong>6.</strong> <span style="color:#E53333;">常量指针</span>：
+<pre class="prettyprint lang-cpp">int *const 变量</pre>
+指针指向的地址是只读的。&lt;/<span class="pl-ent" style="color:#63A35C;">p</span>&gt;
+			</td>
+		</tr>
+		<tr>
+			<td id="L40" class="blob-num js-line-number" style="font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace;color:rgba(0, 0, 0, 0.298039);text-align:right;vertical-align:top;">
+			</td>
+			<td id="LC40" class="blob-code blob-code-inner js-file-line" style="font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace;vertical-align:top;">
+				<strong>7.</strong> 当变量的类型比较复杂时，从右往左进行分析。靠近变量名的修饰符对变量起直接作用。&lt;/<span class="pl-ent" style="color:#63A35C;">p</span>&gt;
+			</td>
+		</tr>
       </section>
 
     </div>
