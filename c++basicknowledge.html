@@ -43,9 +43,8 @@
 使用getline()可以读取一整行字符串，直到遇到换行符为止，保留空白符。
 <br></p>
 <pre><code>  string line;
-  getline(cin, line, end);
+  getline(cin, line, end); //cin:输入流iostream；line：输入的字符串保存在line中；end：结束符，遇到该字符停止读入</code></pre>  
   </code>
-  cin:输入流iostream；line：输入的字符串保存在line中；end：结束符，遇到该字符停止读入</code></pre>   
 </li>
 　　
 <li><p><span style="color:#E53333;"><b>empty和size操作:</b></span> 
@@ -55,8 +54,9 @@
 </ul>
 <p>　　在这里定义了string类型的别名pos，这样使用pos和string是一样的。这种方式可以使得变量声明比较简练，
 也可以防止用户知道类的实现细节。
-
 </p>
+<br></br><br></br><hr>
+
 <p></p><div align="center">
 <p></p>
 <h1>vector</h1>
@@ -67,6 +67,7 @@
 <br><pre><code>  vector&lt;int&gt; ve;             //对象类型为int的vector
   vector&lt;vector&lt;int&gt;&gt; file;   //对象类型为vector对象的vector</code></pre>
 　　引用不是对象，因此不能作为vector的元素。</li>
+<br></br>
 <li><p><span style="color:#E53333;"><b>vector初始化:</b></span> </p>
 <pre><code>  vector&lt;T&gt; v1(n, val);       //v1包含n个重复的元素，所有元素的值为val
   vector&lt;T&gt; v2{a, b, c...};   //v2包含初始值个数的元素，每个元素被赋予相应的初始值</code></pre>
@@ -80,7 +81,10 @@
   v.clear()          //移除所有元素
   v.front()          //传回第一个数据</code></pre>
 <p>　　还有一些操作，懒得写了。。。
-</p><div align="center"><p></p>
+</p>
+<br></br><br></br><hr>
+
+<div align="center"><p></p>
 <h1>迭代器</h1>
 <div align="left">
 </div></div></li>
