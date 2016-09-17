@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="GB18030">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>岚博基尼by wojiaoxulan</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="javascripts/respond.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+ <link rel="shortcut icon" href="/images/lan.jpg" type="image/vnd.microsoft.icon" />
+  </head>
+  <body>
+      <div id="header" align="center">
+      <font size="6" >
+      	岚的博客
+      </font>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+      <div id="title">
+       <img src="/images/snow.jpg" height="200" width="200"  style="float:left"/> <a href="index.html"><font size="4">
+      	&nbsp;&nbsp;博主：岚博基尼</font></a><br></br>
+      	<font size="2"> 
+      	&nbsp;&nbsp;格言：    学而时习之 锲而不舍<br></br>
+      	&nbsp;&nbsp;email：   437694562@qq.com<br></br>
+      	&nbsp;&nbsp;自我评价：教练！我想当码农！<br></br>
+      	</font>
+       <br clear="left"></br><hr>
+       </div>
+      
+<div align="center">
+<p></p>
+<h1>类</h1>
+<div align="left">
+
+<ul>
+<li><p><span style="color:#E53333;"><b>this:</b></span> 隐式的指针，指向调用它的那个对象。因此在类的成员函数里
+可以直接使用数据成员。
+<br></p>
+</li>
+<li><p><span style="color:#E53333;"><b>const成员函数:</b></span> const成员函数不能改变对象的内容。
+<br></p>
+</li>
+<li><p><span style="color:#E53333;"><b>成员函数:</b></span> 成员函数定义在类的内部，默认是inline类型。
+而定义在类外，则不是。如果需要，可以在前面加上inline。
+<br></p>
+</li>
+<li><p><span style="color:#E53333;"><b>构造函数:</b></span> 构造函数没有返回类型。如果类中没有构造函数，那么系统
+会通过默认的构造函数对类进行初始化。但是这种方式只适用于比较简单的类。例如这个类中的其他类类型的数据成员，
+而该类没有默认构造函数，那么就会产生问题。
+<br></p>
+</li>
+<li><p><span style="color:#E53333;"><b>class和struct的区别:</b></span> class的数据成员默认访问权限是private，而struct的数据成员默认访问权限是public。</p>
+</li>
+<li><p><span style="color:#E53333;"><b>友元:</b></span> 友元可以允许其他函数或者类访问类的的非公有成员，方法是
+在类内增加一条声明语句，语句前面应加上关键字friend。
+<br></p>
+</li>
+<li><p><span style="color:#E53333;"><b>typedef:</b></span> 在类中可以使用typedef在类中定义某种类的别名。主要是为了对于类的实现细节进行封装。
+<br></p>
+<pre><code>  class example{
+  public:
+      typedef string pos;
+  private:
+      pos name = "xu lan";
+  } </code></pre>
+<p><br>
+　　在这里定义了string类型的别名pos，这样使用pos和string是一样的。这种方式可以使得变量声明比较简练，
+也可以防止用户知道类的实现细节。
+　同样的，可以使用下列语句来定义别名。
+<br>
+  using pos = string;
+<br></p>
+</li>
+<li><p><span style="color:#E53333;"><b>重载成员函数:</b></span> 重载函数之间的参数数量或者类型应该有所区别，系统根据传入实参的类型以及数量来确定调用哪一个函数。
+<br></p>
+</li>
+<li><p><span style="color:#E53333;"><b>可变数据成员:</b></span> 在变量声明之前加入mutable表明变量是可变数据成员。
+可变数据成员不可能是const类型，即使它是存在于const对象当中。同时可以使用const成员函数对其进行修改。
+<br></p>
+</li>
+<li><p><span style="color:#E53333;"><b>左值、右值:</b></span> 当对象被用作左值的时候表示对象的身份，也就是内存；当对象被用作右值的时候表示对象的内容。
+<br></p>
+</li>
+<li><p><span style="color:#E53333;"><b>返回*this的成员函数:</b></span> 如下类：
+<br></p>
+<pre><code>  class lan
+  {
+      public:
+      char name[10];
+      lan &amp;set(char* n);
+  };
+  inline lan &amp; lan::set(char* n)
+  {
+      name = n;
+      return *this;
+  }</code></pre>
+<p>　　上面的类lan中的成员函数set的数据类型为对象的引用，返回的是对象本身，而非副本。</p>
+</li>
+<li><p><span style="color:#E53333;"><b>类类型:</b></span> 即使两个类的成员完全相同，两个类也不是同一类型。</p>
+</li>
+<li><p><span style="color:#E53333;"><b>函数重载与友元:</b></span> 如果想把一组重载函数声明为友元，则需要对于这组函数每一个分别进行声明。</p>
+</li>
+<li><p><span style="color:#E53333;"><b>成员函数定义的顺序:</b></span> 成员函数的定义是在所有成员可见之后完成的。</p>
+</li>
+<li><p><span style="color:#E53333;"><b>构造函数初始化列表:</b></span> 用构造函数初始化列表进行初始化，是立即初始化。
+而在构造函数的函数体内部进行初始化，是赋值操作。如果构造函数没有初始化列表，那么在执行函数体之前，使用默认初始化构造函数
+进成员进行初始化。
+<br>
+<span style="color:#E53333;">　　注意:对于初始化const或者引用类型的数据成员，唯一的方法是通过构造函数的初始化列表。例如：</span> 
+<br></p>
+<pre><code>  class lan{
+      public:
+          lan(int age, char name);
+      private:
+          int Age;
+          const char Name;
+          int &amp;Weight;
+  }</code></pre>
+<p>　　要对name和weight进行初始化，应该通过如下方式：
+<br></p>
+<pre><code>  lan::lan(int age, char name):Age(age), Name(name), weight(age){}</code></pre>
+</li>
+<li><p><span style="color:#E53333;"><b>成员初始化顺序:</b></span> 使用构造函数的初始化列表进行初始化时，初始化的顺序为成员在类内定义的顺序，
+和参数列表中的顺序无关。</p>
+</li>
+<li><p><span style="color:#E53333;"><b>默认实参:</b></span> 如果对构造函数中的所有形参都提供默认形参，那么该构造函数也相当于默认构造函数。</p>
+</li>
+<li><p><span style="color:#E53333;"><b>对象使用默认构造函数初始化:</b></span> 声明对象使用默认构造函数进行初始化时，不可以在变量名后面加（）。
+<br></p>
+<pre><code>  class lan{...};
+  lan obj();      //错误：声明了一个函数而不是对象
+  lan obj2;       //正确：obj2是一个对象而不是函数</code></pre>
+</li>
+<li><p><span style="color:#E53333;"><b>静态成员:</b></span> 在声明之前加上static关键字，则该变量或者函数为静态成员。类的静态成员存在对任何对象之外，被所有的对象共享。
+在类的作用域外可以使用作用域运算符直接访问静态成员,如下。
+<br></p>
+<pre><code>  class lan{
+      public:
+          static int tel; 
+  }
+  int count = lan :: tel;</code></pre>
+</li></ul>
+<p></p>
+</div></div>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
