@@ -34,6 +34,7 @@
       <li class="fork"><a href="C++/1_C++_variable.html">C++基础知识之变量和基本类型</a></li>
       <li class="fork"><a href="C++/2_C++_basicknowledge.html">C++基础知识之字符串,vector,迭代器</a></li>
       <li class="fork"><a href="C++/3_C++_class.html">C++基础知识之类</a></li>
+      <li class="fork"><a href="C++/4_C++_binary search.html">C++基础知识之二分查找</a></li>
       </section>
 
     </div>
