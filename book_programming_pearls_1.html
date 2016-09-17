@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="GB18030">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>岚博基尼by wojiaoxulan</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="javascripts/respond.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+ <link rel="shortcut icon" href="/images/lan.jpg" type="image/vnd.microsoft.icon" />
+  </head> 
+  <body>
+      <div id="header" align="center">
+      <font size="6" >
+      	岚的博客
+      </font>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+      <section>
+       <div id="title">
+       <img src="/images/snow.jpg" height="200" width="200"  style="float:left"/> <a href="index.html"><font size="4">
+      	&nbsp;&nbsp;博主：岚博基尼</font></a><br></br>
+      	<font size="2"> 
+      	&nbsp;&nbsp;格言：    学而时习之 锲而不舍<br></br>
+      	&nbsp;&nbsp;email：   437694562@qq.com<br></br>
+      	&nbsp;&nbsp;自我评价：教练！我想当码农！<br></br>
+      	</font>
+       <br clear="left"></br><hr>
+       </div>
+
+<div align="center">
+<p></p>
+<h1>编程珠玑第一章</h1>
+<div align="left">
+
+<ul>
+<li><p><span style="color:#E53333;"><b>位向量：</b></span> 由二进制位组成的向量，直接对每一个bit进行操作。
+<br>　　　
+C++语言使用基本类型int或者char等来存储数据，但是如果想要记录每个对象的状态0或者1，那么使用基本类型int或者char
+会浪费空间。而如果使用位向量，那么可以充分利用内存。
+<br>　　　
+首先定义数据类型：</p>
+<pre><code>  #define N           10000000  //number of elements
+  #define BITPERWORD  32        //bits of int depends on machine
+  unsigned int a[100];</code></pre>
+<p>　　　直接使用整型数组作为基本的数据类型，而数组的大小和要存储的元素数量相关。
+位向量应该支持三种操作：对某一位置1、置0、读取。
+<br>　　　
+将第num个bit位置1</p>
+<pre><code>  void betrue(int num)
+  {   a[num&gt;&gt;5] |= 1 &lt;&lt; (num &amp; 31);          }</code></pre>
+<p>　　　
+将第num个bit位置0</p>
+<pre><code>  void befalse(int num)
+  {   a[num&gt;&gt;5] &amp;= ~(1 &lt;&lt; (num &amp; 31));       }</code></pre>
+<p>　　　
+对第num个bit读值</p>
+<pre><code>  unsigned int read(int num)
+  {   return a[num&gt;&gt;5] &amp; (1 &lt;&lt; (num &amp; 31));  }</code></pre>
+<p><br>　　　
+下面是使用位向量实现排序的例子。</p>
+<pre><code>  #include "stdafx.h"
+  #include&lt;string&gt;
+  #include&lt;iostream&gt;
+  using namespace std;
+  unsigned int a[100];
+  void betrue(int num);         //设第num个bit位是1
+  void befalse(int num);        //设第num个bit位是0
+  unsigned int read(int num);  //返回第num个bit位的值
+  int main()
+  {
+
+      for(int i=0; i&lt;100; i++)
+          a[i] = 0;
+      int n;
+      cin&gt;&gt;n;
+      int num;
+      while(n--)
+      {
+          cin&gt;&gt;num;
+          betrue(num);
+      }
+      for(int k=0;k&lt;3200;k++)
+             if(read(k))
+              cout&lt;&lt;k&lt;&lt;endl;
+   return 0;
+  }
+
+  void betrue(int num)
+  {   a[num&gt;&gt;5] |= 1 &lt;&lt; (num &amp; 31);          }
+
+  void befalse(int num)
+  {   a[num&gt;&gt;5] &amp;= ~(1 &lt;&lt; (num &amp; 31));       }
+
+  unsigned int read(int num)
+  {   return a[num&gt;&gt;5] &amp; (1 &lt;&lt; (num &amp; 31));  }</code></pre>
+</li>
+</ul>
+</section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+  
+  </body> 
+</html>
