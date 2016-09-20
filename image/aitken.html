@@ -31,27 +31,33 @@
        </div>
 
 
-<h1><div align="center">多项式插值曲线</div></h1>
+
+<div align="center">
+<p></p>
+<h1>Aitken’s算法</h1>
 <div align="left">
 
 <ul>
 <li><span style="color:#E53333;"><b>原理：</b></span>
-<br>　　假设二维坐标系上有离散点集Pi，i=1,2,...n，采用幂基构造插值曲线。
-<div align="center"> <img src="../images/interpolation2.png" height="56" width="110"/> 
-<div align="left">
-<br>　　其中系数aj为未知数。
-<br>　　线性方程组的矩阵形式为：
-<div align="center">
-<img src="../images/interpolation1.png" height="120" width="276"/> 
-<div align="left">
-<br>　　对于n次多项式曲线，需要n+1组线性无关的多项式来进行计算。由于误差，很难得到准确地
-曲线方程，则可以用最小二乘法等方式得到最优解。
-<br>　　多项式曲线应该算是最简单直观的插值方法了。
+<br>　　由两个n-1次多项式的线性组合生成一个n次多项式</li>
+</ul>
+<p></p><div align="center">
+<img src="../images/aitken1.png" height="180" width="214">
+<p></p>
+<p></p><div align="left">
+<br>　　假设已经得到了n个数据点P0...P(n-1)的n-1次插值曲线P0(t)以及对P1...Pn
+插值得到的n-1次曲线P1(t)，则通过加权平均可以得到n次插值曲线。
+<p></p>
+<p></p><div align="center">
+<img src="../images/aitken2.png" height="55" width="284">
+<p></p>
+<p></p><div align="left">
+　　就是根据几何距离加权平均，很简单，不详说了。很容易能够推广到三维空间。
 
 <br></br>
-<span style="float:left;"><a href="../image_list.html">上一章</a></span>
+<span style="float:left;"><a href="./Polynomial interpolation.html">上一章</a></span>
 　　　　　　　　　　　　　　　　<a href="../image_list.html">图像处理目录</a>
-<span style="float:right;"><a href="./aitken.html">下一章</a></span>
+<span style="float:right;"><a href="../image_list.html">下一章</a></span>
 </section>
 
     </div>
