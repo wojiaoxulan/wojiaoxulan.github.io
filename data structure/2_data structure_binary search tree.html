@@ -1,0 +1,210 @@
+﻿<!doctype html>
+<html>
+  <head>
+    <meta charset="GB18030">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>岚博基尼by wojiaoxulan</title>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-dark.css">
+    <script src="javascripts/respond.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+ <link rel="shortcut icon" href="../images/lan.jpg" type="image/vnd.microsoft.icon" />
+  </head>
+  <body>
+      <div id="header" align="center">
+      <font size="6" >
+      	岚的博客
+      </font>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+      <div id="title">
+       <img src="../images/snow.jpg" height="200" width="200"  style="float:left"/> <a href="https://wojiaoxulan.github.io"><font size="4">
+      	&nbsp;&nbsp;博主：岚博基尼</font></a><br></br>
+      	<font size="2"> 
+      	&nbsp;&nbsp;格言：    学而时习之 锲而不舍<br></br>
+      	&nbsp;&nbsp;email：   437694562@qq.com<br></br>
+      	&nbsp;&nbsp;自我评价：教练！我想当码农！<br></br>
+      	</font>
+       <br clear="left"></br><hr>
+       </div>
+      
+	<div align="center">
+<p></p>
+<h1>二叉查找树</h1>
+<div align="left">
+
+<ul>
+<li><span style="color:#E53333;"><b>数据结构：</b></span>
+<br>　　这个数据结构哇，还是很简单滴，之前都是用结构体，
+现在用类来实现，也是一样滴。构造函数还是要做好滴。<pre><code>  class node
+  {
+      public:
+          node * left;
+          node * right;
+          int val;
+          node(){
+              left  = NULL;
+              right = NULL;
+              val  = 0;
+          }
+          node(int a){
+              left  = NULL;
+              right = NULL;
+              val  = a;
+          }
+  };</code></pre>
+<br></li>
+<li><p><span style="color:#E53333;"><b>插入节点:</b></span>
+<br>　　哎呀，就是构造树。我是用递归做的，虽然可以用非递归，但是这样代码看起来
+很简洁。不过还是不要这么用。</p>
+<pre><code>  /// @brief 插入节点
+  /// @param[in]  head 头结点
+  /// @param[in] num  要插入的数字
+  void insert(node *&amp;head, int num)
+  {
+
+      if(head == NULL)
+      {
+          node *N = new node(num);
+          head = N;
+          return;
+      }
+
+      if(num &lt;= head-&gt;val)
+      {
+          if(head-&gt;left == NULL)
+          {
+              node *N = new node(num);
+              head-&gt;left = N;
+              return;
+          }
+          insert(head-&gt;left, num);
+      }
+      else
+      {
+          if(head-&gt;right == NULL)
+          {
+              node *N = new node(num);
+              head-&gt;right = N;
+              return;
+          }
+          insert(head-&gt;right, num);
+      }
+  }</code></pre>
+<p><br></p>
+</li>
+<li><p><span style="color:#E53333;"><b>删除节点:</b></span>
+<br>　　有插入就有删除。删除比较麻烦，因为鬼知道会删除哪一个节点，
+而该节点删除后很有可能破坏二叉查找树的结构。删除节点主要有三种情况：
+<br>　　1. 待删除节点是叶子节点。此时释放掉节点空间，然后指针置为NULL；
+<br>　　2. 待删除节点的做字数或者右子树为空。此时用右子树或者左子树代替待删除节点；
+<br>　　3. 待删除节点的左右子树均不为空。此时分为两种情况：
+<br>　　　　（1）如果右子树的左子树为空，则
+将待删除点的左子树变成待删除点右子树的左子树，然后待删除点的右子树取代待删除点。
+对称的情况是一样的；
+<br>　　　　（2）找到待删除点的后继，然后取代待删除点。</p>
+<pre><code>  void del(node *&amp;head, int num)
+  {
+      node *p = head;
+      if(head == NULL)
+      {
+          cout&lt;&lt;"木有找到"&lt;&lt;endl;
+          return;
+      }
+      if((head)-&gt;val  == num)
+      {
+          if(p-&gt;left == NULL &amp;&amp; p-&gt;right ==NULL)
+          {
+              head = NULL;
+              delete p;
+          }
+          else if(p-&gt;left == NULL)
+          {
+              p = head-&gt;right;
+              *head = *(head-&gt;right);
+              delete p;
+          }
+          else if(p-&gt;right == NULL)
+          {
+              p = head-&gt;left;
+              *head = *(head-&gt;left);
+              delete p;
+          }
+          else 
+          {
+              if(p-&gt;right-&gt;left == NULL)
+              {
+                  p = head-&gt;right;
+                  head-&gt;right-&gt;left = head-&gt;left;
+                  *head = *(head-&gt;right);
+                  delete p;
+              }
+              else
+              {
+                  node *s = head-&gt;right;
+                  while(s-&gt;left != NULL)
+                      s = s-&gt;left;
+                  *head = *s;
+                  delete s;
+              }
+          }
+          return;
+      }
+      if(head-&gt;val  &gt; num &amp;&amp; head-&gt;left !=NULL)
+          del(head-&gt;left, num);
+
+      else if(head-&gt;val  &lt; num &amp;&amp; head-&gt;right !=NULL)
+          del(head-&gt;right, num);
+  }</code></pre>
+<p>　　还是递归，虽然...，但是...，我就是用递归了，咋地？！</p>
+</li>
+</ul>
+<p><br>
+
+</p>
+<ul>
+<li><span style="color:#E53333;"><b>中序遍历:</b></span>
+<br>　　很简单，不说了。上代码！<pre><code>  void order(node *head)
+  {
+      if(head == NULL)
+          return;    
+      preorder(head-&gt;left);
+      cout&lt;&lt;head-&gt;val&lt;&lt;endl;
+      preorder(head-&gt;right);
+  }</code></pre>
+</li>
+</ul>
+<p><br>
+
+</p>
+<ul>
+<li><span style="color:#E53333;"><b>查找节点:</b></span>
+<br>　　很简单，不说了。上代码！<pre><code>  node *find(node *head, int num)
+  {
+      if(head == NULL)
+          return NULL;
+      if(num == head-&gt;val)
+          return head;
+      else if(num &lt; head-&gt;val)
+          find(head-&gt;left, num);
+      else
+          find(head-&gt;right, num);
+  }</code></pre>
+<br>　　最后总结一下，引用还是很好用的；释放掉指针指向的对象后，指针要置NULL，否则会出错。</li>
+</ul>
+</div></div>
+
+<br></br>
+<span style="float:left;"><a href="./1_data structure_binary search.html">上一章</a></span>
+　　　　　　　　　　　　　　　　<a href="../data structure_list.html">数据结构目录</a>
+<span style="float:right;"><a href="../data structure_list.html">下一章</a></span>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
