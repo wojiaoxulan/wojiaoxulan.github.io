@@ -1,0 +1,101 @@
+﻿<!doctype html>
+<html>
+  <head>
+    <meta charset="GB18030 ">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>岚博基尼by wojiaoxulan</title>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-dark.css">
+    <script src="javascripts/respond.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+ <link rel="shortcut icon" href="../images/lan.jpg" type="image/vnd.microsoft.icon" />
+  </head>
+  <body>
+      <div id="header" align="center">
+      <font size="6" >
+      	岚的博客
+      </font>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+      <div id="title">
+       <img src="../images/snow.jpg" height="200" width="200"  style="float:left"/> <a href="https://wojiaoxulan.github.io"><font size="4">
+      	&nbsp;&nbsp;博主：岚博基尼</font></a><br></br>
+      	<font size="2"> 
+      	&nbsp;&nbsp;格言：    学而时习之 锲而不舍<br></br>
+      	&nbsp;&nbsp;email：   437694562@qq.com<br></br>
+      	&nbsp;&nbsp;自我评价：教练！我想当码农！<br></br>
+      	</font>
+       <br clear="left"></br><hr>
+       </div>
+      
+<div align="center">
+<p></p>
+<h1>多态</h1>
+<div align="left">
+
+<ul>
+<li><p><span style="color:#E53333;"><b>多态的定义：</b></span>
+<br>　　多态即接口不与某一函数进行绑定，也就是不会在编译时进行绑定，
+而是在运行的时候确定使用哪种实现方式，这也是C++的三大特性之一。
+<br>　　示例如下：</p>
+<pre><code>  #include "stdafx.h"
+  #include "iostream"
+  using namespace std;
+  class baba
+  {
+      public:
+          int val;
+          virtual void print() { cout&lt;&lt;"偶都桑"&lt;&lt;endl; }
+          baba()               { val = 0; }
+          baba(int num)        { val = num; }
+  };
+  class era:public baba
+  {
+      public:
+          void print() { cout&lt;&lt;"鼓捣猫"&lt;&lt;endl; }
+          era(int num) { val = num; }
+          era()        { val = 0; }
+  };
+  int main(int argc, char* argv[])
+  {
+      baba *parents;
+
+      parents = new era(-1);
+      parents-&gt;print();
+
+      parents = new baba(2);
+      parents-&gt;print();
+
+      return 0;
+  }</code></pre>
+</li>
+</ul>
+<p>　　输出的结果如下：
+
+</p>
+<pre><code>    鼓捣猫
+    偶都桑</code></pre>
+<ul>
+<li><span style="color:#E53333;"><b>实现的方式：</b></span>
+<br>　　其实就是对于每一个类构造一个虚表，虚表里存放了虚函数的地址。
+而每一个对象都会有一个虚表指针，<span style="color:#E53333;">注意：虚表指针是在对象里的。</span>
+虚表指针指向该对象所属类的虚表。
+<br>　　因此当使用父类指针指向子类对象时，会根据对象的类型，将虚表指针进行初始化，这样就可以实现多态了。</li>
+</ul>
+<p></a></p>
+</div></div>
+<span style="float:left;"><a href="./7_C++_quicksort.html">上一章</a></span>
+　　　　　　　　　　　　　　　　<a href="../C++_list.html">C++基础目录</a>
+<span style="float:right;"><a href="../C++_list.html">下一章</a></span>
+
+
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
