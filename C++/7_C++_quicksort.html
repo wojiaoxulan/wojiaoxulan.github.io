@@ -33,59 +33,42 @@
       
 <div align="center">
 <p></p>
-<h1>拷贝构造函数</h1>
+<h1>快排算法</h1>
 <div align="left">
 
 <ul>
-<li><p><span style="color:#E53333;"><b>作用：</b></span>
-<br>　　很多对象初始化是用过相同类型的对象赋值进行初始化的，当然也有传参
-以及函数返回。</p>
-<pre><code>  class lan
+<li><p><span style="color:#E53333;"><b>说明：</b></span>
+<br>　　分而治之，代码如下：</p>
+<pre><code>  void quicksort(int *a, int l, int r)
   {
-      private:
-      int age;
+      if(l &gt;= r)
+          return;
 
-      public:
-      lan(){ age = 18;}
-      lan(const lan&amp; f){ age = f.age; }
-      ~lan(){ cout&lt;&lt;"over"&lt;&lt;endl; }
+      int i = l, j = r, tem = a[l];
+      while(i &lt; j)
+      {
+          while(a[j] &gt;= tem)
+              j--;
+          if(i&lt;j)
+              a[i++] = a[j];
+
+          while(a[i] &lt; tem)
+              i++;
+          if(i&lt;j)
+              a[j--] = a[i];
+      }
+      a[i] = tem;
+      quicksort(a, l, i-1);
+      quicksort(a, i+1, r);
   }</code></pre>
+<p>　　唉。。。一般直接调用函数了，谁没事写快排算法啊。烦人。。。</p>
 </li>
 </ul>
-<p>　　对于类中具有动态成员的情况，用直接对应的成员来赋值是不可以的。这就用到了拷贝
-构造函数，来“深拷贝”。
-
-</p>
-<pre><code>        class lan
-        {
-            public:
-            int age;
-            static int num;
-            int *money;
-            lan()
-            {
-                age = 18;
-                num ++;
-                money = new int(10);
-            }
-            lan(const lan&amp; f)
-            {
-                age = f.age;
-                num++;
-                money = new int(10);
-                for(int i=0;i&lt;10;i++)
-                    money[i] = f.money[i];
-            }
-        };
-        int lan::num =0;</code></pre>
-<p>　　类中的int *money就是动态类型。如果浅拷贝，那么两个对象a、b的money指针会
-指向同一内存区域，显然，这是不合适的。因此需要在拷贝构造函数里重新分配内存。</a></p>
+<p></a></p>
 </div></div>
-</li>
-</ul>
-<span style="float:left;"><a href="./5_C++_Data alignment.html">上一章</a></span>
+<span style="float:left;"><a href="./6_C++_copy constructor.html">上一章</a></span>
 　　　　　　　　　　　　　　　　<a href="../C++_list.html">C++基础目录</a>
-<span style="float:right;"><a href="./7_C++_quicksort.html">下一章</a></span>
+<span style="float:right;"><a href="../C++_list.html">下一章</a></span>
 
 
       </section>
