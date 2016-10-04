@@ -1,0 +1,125 @@
+﻿<!doctype html>
+<html>
+  <head>
+    <meta charset="GB18030 ">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>岚博基尼by wojiaoxulan</title>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-dark.css">
+    <script src="javascripts/respond.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+ <link rel="shortcut icon" href="../images/lan.jpg" type="image/vnd.microsoft.icon" />
+  </head>
+  <body>
+      <div id="header" align="center">
+      <font size="6" >
+      	岚的博客
+      </font>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+      <div id="title">
+       <img src="../images/snow.jpg" height="200" width="200"  style="float:left"/> <a href="https://wojiaoxulan.github.io"><font size="4">
+      	&nbsp;&nbsp;博主：岚博基尼</font></a><br></br>
+      	<font size="2"> 
+      	&nbsp;&nbsp;格言：    学而时习之 锲而不舍<br></br>
+      	&nbsp;&nbsp;email：   437694562@qq.com<br></br>
+      	&nbsp;&nbsp;自我评价：教练！我想当码农！<br></br>
+      	</font>
+       <br clear="left"></br><hr>
+       </div>
+      
+<div align="center">
+<p></p>
+<h1>智能指针</h1>
+<div align="left">
+
+<p><span style="color:#E53333;"><b>作用：</b></span>
+<br>　　由于用new分配动态内存空间，必须在使用结束后delete将内存释放掉，否则容易造成内存泄漏。
+这也是由于C++没有垃圾回收机制，这会造成很大的不便。
+<br>　　最早的智能指针是auto_ptr类，但是后来被摒弃了。为什么呢？这是因为auto_ptr中没有计数器，因此
+也就无法使得多个指针指向同一块内存区域。否则，同一内存区域将会被释放两次，这是不可以的。
+<br>　<span style="color:#E53333;"><b>0. auto_ptr类：</b></span>
+
+</p>
+<pre><code>    auto_ptr&lt;T&gt; p;      //声明了T类型的auto_ptr指针</code></pre>
+<p><br>
+<br>　　C++11当中提供了三种智能指针来负责自动释放它所指向的对象，shared_ptr类、unique_ptr类、weak_ptr类。
+智能指针是模板，因此声明的方法和vector相似。
+<br>　<span style="color:#E53333;"><b>1. shared_ptr类：</b></span>
+
+</p>
+<pre><code>shared_ptr&lt;string&gt;    p1;      //指向string
+shared_ptr&lt;list&lt;int&gt;&gt; p2;      //指向int的list</code></pre>
+<p>　　默认初始化为空指针。智能指针的用法和一般的指针差不多，*p1返回智能指针所指向的对象。
+</p>
+<p></p><div align="center"><b>
+表1：shared_ptr和unique_ptr都支持的操作
+<p></p>
+<p></p></b><div align="left"><b></b>
+
+<p></p>
+<pre><code>    *p         解引用，获得指向的对象
+    p-&gt;mem     访问对象的成员
+    p.get()    返回p中保存的指针，但是一旦p指向的对象释放掉了，那么其指向的对象也消失了
+    p.swap(q)  交换p和q中的指针
+    swap(p,q)</code></pre>
+<p></p><div align="center"><b>
+表2：shared_ptr独有的操作
+<p></p>
+<p></p></b><div align="left"><b></b>
+
+<p></p>
+<pre><code>    make_shared&lt;T&gt;(args)  返回一个shared_ptr，指向类型T的对象，使用args初始化此对象
+    shared_ptr&lt;T&gt;p(q)     用q来对p进行拷贝初始化，此操作会将q的计数器递增
+    p = q                 p和q都是shared，且能够相互转换。会递增q的计数器，递减p的计数器
+    p.unique()            若p.use_count=1，返回true，否则返回false
+    p.use_count()         返回与p共享对象的智能指针数量；速度慢，用于调试</code></pre>
+<p><br>　　<b>1) make_shared函数</b>
+<br>　　该函数用来分配内存，比较安全，使用makeshared函数来初始化对象的方式，和类模板是一样的。
+
+</p>
+<pre><code>    shared_ptr&lt;int&gt;    p1 = make_ptr&lt;int&gt;(18);  //p1指向值为18的int类型数据
+    shared_ptr&lt;string&gt; p2 = make_ptr&lt;string&gt;(8,'7'); //p2指向“77777777”</code></pre>
+<p>　　指向同一内存的每一个shared_ptr指针都关联了一个计数器，记录了有多少个shared_ptr指针指向它。一旦计数器为0，
+那么就释放该内存。或者局部变量离开了作用域，那么也会释放内存。shared_ptr类销毁对象，会调用析构函数。
+
+</p>
+<p><br>　<span style="color:#E53333;"><b>2. unique_ptr类：</b></span>
+<br>　　顾名思义，unique_ptr拥有它所指向的对象，在某一时刻，只有一个unique_ptr能够指向某一对象。unique_ptr需要与一个new返回的
+指针进行绑定。由于unique_ptr拥有它指向的对象，因此不支持普通的拷贝或者复制操作。
+
+</p>
+<pre><code>    unique_ptr&lt;T&gt; u1      空的unique_ptr，使用delete来释放指向的对象
+    unique_ptr&lt;T, D&gt; u2   使用类型为D的可调用对象来释放指针
+    unique_ptr&lt;T, D&gt; u(d) 空的unique_ptr指针，使用类型为D的对象d来释放指向的对象
+    u = nullptr           释放指向的对象，并将u置为空。
+    u.release()           u放弃对于指针的控制权，返回内置指针，并将u置为空。
+    u.reset()             释放u所指向的对象
+    u.reset(q)            u指向指针q所指向的对象</code></pre>
+<p><br>　<span style="color:#E53333;"><b>3. weak_ptr类：</b></span>
+<br>　　弱共享，指向shared_ptr指针指向的对象，但是不会引起计数器的变化。同时也不能使用weak_ptr来直接访问对象。
+
+</p>
+<pre><code>    auto p = make_shared&lt;int&gt;(42);
+    weak_ptr&lt;int&gt; wp(p);//用shared_ptr指针p来初始化weak_ptr指针
+    if(shared_ptr&lt;int&gt; np = wp.lock())//如果weak_ptr指向的对象存在，那么返回该对象的shared_ptr指针
+    {
+
+    }</code></pre>
+<p></a></p>
+</div></div></div></div></div></div>
+<span style="float:left;"><a href="./8_C++_polymorphic.html">上一章</a></span>
+　　　　　　　　　　　　　　　　<a href="../C++_list.html">C++基础目录</a>
+<span style="float:right;"><a href="../C++_list.html">下一章</a></span>
+
+
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
