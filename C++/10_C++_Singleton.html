@@ -1,0 +1,89 @@
+﻿<!doctype html>
+<html>
+  <head>
+    <meta charset="GB18030 ">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>岚博基尼by wojiaoxulan</title>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-dark.css">
+    <script src="javascripts/respond.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+ <link rel="shortcut icon" href="../images/lan.jpg" type="image/vnd.microsoft.icon" />
+  </head>
+  <body>
+      <div id="header" align="center">
+      <font size="6" >
+      	岚的博客
+      </font>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+      <div id="title">
+       <img src="../images/snow.jpg" height="200" width="200"  style="float:left"/> <a href="https://wojiaoxulan.github.io"><font size="4">
+      	&nbsp;&nbsp;博主：岚博基尼</font></a><br></br>
+      	<font size="2"> 
+      	&nbsp;&nbsp;格言：    学而时习之 锲而不舍<br></br>
+      	&nbsp;&nbsp;email：   437694562@qq.com<br></br>
+      	&nbsp;&nbsp;自我评价：教练！我想当码农！<br></br>
+      	</font>
+       <br clear="left"></br><hr>
+       </div>
+      
+<div align="center">
+<p></p>
+<h1>单例模式</h1>
+<div align="left">
+
+<p><span style="color:#E53333;"><b>定义：</b></span>
+<br>　　单例模式就是一个类只能有一个实例，这种类的实例要求是唯一的，
+</p>
+<pre><code>#include "stdafx.h"
+#include "iostream"
+#include "cstdlib"
+using namespace std;
+
+class Singleton    
+{  
+    public:  
+        static Singleton&amp; GetInstance(); 
+        int val; 
+    private:
+        static int num;
+        Singleton()    { num++; val=12345;} 
+        Singleton(const Singleton &amp;copy) { cout&lt;&lt;"客官不可以"&lt;&lt;endl;} 
+        static Singleton *singleton;  
+};  
+
+int Singleton::num = 0;
+Singleton* Singleton::singleton = NULL;  
+Singleton&amp; Singleton::GetInstance()  
+{  
+    if(singleton == NULL)  
+        singleton = new Singleton();  
+    else
+        cout&lt;&lt;"faiLure"&lt;&lt;endl;
+    return *singleton;  
+}  
+
+int main(int argc, char* argv[])
+{
+    Singleton &amp;a = Singleton::GetInstance();
+    cout&lt;&lt;a.val&lt;&lt;endl;
+    return 0;
+}</code></pre>
+<p></p>
+</div></div>
+<span style="float:left;"><a href="./9_C++_smart pointer.html">上一章</a></span>
+　　　　　　　　　　　　　　　　<a href="../C++_list.html">C++基础目录</a>
+<span style="float:right;"><a href="../C++_list.html">下一章</a></span>
+
+
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
