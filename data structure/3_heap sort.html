@@ -1,0 +1,138 @@
+﻿<!doctype html>
+<html>
+  <head>
+    <meta charset="GB18030">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>岚博基尼by wojiaoxulan</title>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-dark.css">
+    <script src="javascripts/respond.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+ <link rel="shortcut icon" href="../images/lan.jpg" type="image/vnd.microsoft.icon" />
+  </head>
+  <body>
+      <div id="header" align="center">
+      <font size="6" >
+      	岚的博客
+      </font>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+      <div id="title">
+       <img src="../images/snow.jpg" height="200" width="200"  style="float:left"/> <a href="https://wojiaoxulan.github.io"><font size="4">
+      	&nbsp;&nbsp;博主：岚博基尼</font></a><br></br>
+      	<font size="2"> 
+      	&nbsp;&nbsp;格言：    学而时习之 锲而不舍<br></br>
+      	&nbsp;&nbsp;email：   437694562@qq.com<br></br>
+      	&nbsp;&nbsp;自我评价：教练！我想当码农！<br></br>
+      	</font>
+       <br clear="left"></br><hr>
+       </div>
+      
+	<div align="center">
+<p></p>
+<h1>堆排序</h1>
+<div align="left">
+
+<p><span style="color:#E53333;"><b>fixup()函数：</b></span>向上调整节点
+
+</p>
+<pre><code>    //@function：  向上调整节点
+    //@input  a：  堆的头结点
+    //@input  len：堆的长度
+    void fixup(int *a, int len)
+    {
+        int curr = len -1;
+        int parent = (curr-1)/2;
+        while(parent&gt;=0 &amp;&amp; a[parent] &gt; a[curr])
+        {
+            swap(a[curr], a[parent]);
+            curr = parent;
+            parent = (curr-1)/2;
+        }
+    }</code></pre>
+<p><br>
+<span style="color:#E53333;"><b>fixdown()函数：</b></span>向下调整节点
+
+</p>
+<pre><code>    //@function：  向下调整节点
+    //@input  a：  堆的头结点
+    //@input  i：  待调整结点的下标
+    //@input  len：堆的长度
+    void fixdown(int *a, int i, int len)
+    {
+        if(len == 1)
+            return;
+
+        int last = len-1;
+        while(i &lt;= (last-1)/2)
+        {
+            int son;
+
+            if(2*i+2 &lt; last)
+                son = a[2*i+1] &lt; a[2*i+2] ? 2*i+1 : 2*i+2;
+            else
+                son = 2*i+1;
+
+            if(a[i] &gt; a[son])
+            {
+                swap(a[i], a[son]);
+                i = son;
+            }
+            else
+                break;
+        }
+    }</code></pre>
+<p><br>
+<span style="color:#E53333;"><b>del()函数：</b></span>删除节点
+
+</p>
+<pre><code>    //@function：  删除节点
+    //@input  a：  堆的头结点
+    //@input  len：堆的长度
+   void del(int *a, int &amp;len)
+    {
+        swap(a[0], a[len-1]);
+        len--;
+        fixdown(a, 0, len);
+    }</code></pre>
+<p><br>
+<span style="color:#E53333;"><b>add()函数：</b></span>插入节点
+
+</p>
+<pre><code>    //@function：  插入节点
+    //@input  a：  堆的头结点
+    //@input  len：堆的长度
+    void add(int *a, int &amp;len, int num)
+    {
+        a[len] = num;
+        len++;
+        fixup(a, len);
+    }</code></pre>
+<p><br>
+<span style="color:#E53333;"><b>build()函数：</b></span>建树
+
+</p>
+<pre><code>    //@function：  建树
+    //@input  a：  堆的头结点
+    //@input  len：堆的长度
+   void build(int *a, int &amp;len)
+    {
+        for(int i = (len-1)/2; i&gt;=0; i--)
+            fixdown(a, i, len);
+    }</code></pre>
+<p></a></p>
+</div></div>
+<br></br>
+<span style="float:left;"><a href="./2_data structure_binary search tree.html">上一章</a></span>
+　　　　　　　　　　　　　　　　<a href="../data structure_list.html">数据结构目录</a>
+<span style="float:right;"><a href="../data structure_list.html">下一章</a></span>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
