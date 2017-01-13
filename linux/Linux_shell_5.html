@@ -1,0 +1,62 @@
+﻿<!doctype html>
+<html>
+  <head>
+    <meta charset="GB18030">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>岚博基尼by wojiaoxulan</title>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-dark.css">
+    <script src="javascripts/respond.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+ <link rel="shortcut icon" href="../images/lan.jpg" type="image/vnd.microsoft.icon" />
+  </head> 
+  <body>
+      <div id="header" align="center">
+      <font size="6" >
+      	岚的博客
+      </font>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+      <section>
+       <div id="title">
+       <img src="../images/snow.jpg" height="200" width="200"  style="float:left"/> <a href="https://wojiaoxulan.github.io"><font size="4">
+      	&nbsp;&nbsp;博主：岚博基尼</font></a><br></br>
+      	<font size="2"> 
+      	&nbsp;&nbsp;格言：    学而时习之 锲而不舍<br></br>
+      	&nbsp;&nbsp;email：   437694562@qq.com<br></br>
+      	&nbsp;&nbsp;自我评价：教练！我想当码农！<br></br>
+      	</font>
+       <br clear="left"></br><hr>
+       </div>
+
+
+<h1><div align="center">shell十三问之第五问</div></h1>
+<br><span style="color:#E53333;">　　var=value？export前后差在哪？</span>
+<br>　　var就是变量，可以设值。中间有一些规则，大概和一般的语言也差不多。如下：
+<br>　　　　1.等号左右两边不能使用区隔符号(IFS)，也应避免使用 shell 的保留字符(meta charactor)。
+<br>　　　　2.变量名称不能使用 $ 符号（限于等号左侧变量处）。
+<br>　　　　3.变量名称的第一个字母不能是数字(number)：命名规则。
+<br>　　　　4.变量名称长度不可超过 256 个字母。
+<br>　　　　5.变量名称及变量值的大小写是有区别的(case sensitive)。
+<br>　　表达式：
+
+<p></p>
+<pre><code>            a=1
+            b=$a //变量替换用，此时相当于b=1
+            c=$[a+b] //表达式，c=a+b；c=$((a=b))亦可，注意两层括号
+            echo $c  //输出结果为2</code></pre>
+<p><br>　　注意：变量赋值时，右值变量前面加$，表示变量替换，否则会当成一般的字符串处理。</p>
+</body>
+
+<br></br>
+<span style="float:left;"><a href="./Linux_shell_4.html">上一章</a></span>
+　　　　　　　　　　　　　　　　<a href="../Linux_list.html">Linux目录</a>
+<span style="float:right;"><a href="./Linux_shell_6.html">下一章</a></span>
+</section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+  
+  </body> 
+</html>

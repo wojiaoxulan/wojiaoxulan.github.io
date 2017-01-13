@@ -31,53 +31,27 @@
        <br clear="left"></br><hr>
        </div>
       
+
 <div align="center">
 <p></p>
-<h1>单例模式</h1>
+<h1>Floyd算法</h1>
 <div align="left">
 
-<p><span style="color:#E53333;"><b>定义：</b></span>
-<br>　　单例模式就是一个类只能有一个实例，这种类的实例要求是唯一的，
+<p><span style="color:#E53333;"><b>算法思想：</b></span>用三重循环不断进行更新邻接矩阵，其中邻接矩阵D[i][j]代表顶点i到顶点j的几何距离。
+
 </p>
-<pre><code>#include "stdafx.h"
-#include "iostream"
-#include "cstdlib"
-using namespace std;
-
-class Singleton    
-{  
-    public:  
-        static Singleton&amp; GetInstance(); 
-        int val; 
-    private:
-        static int num;
-        Singleton()    { num++; val=12345;} 
-        Singleton(const Singleton &amp;copy) { cout&lt;&lt;"客官不可以"&lt;&lt;endl;} 
-        static Singleton *singleton;  
-};  
-
-int Singleton::num = 0;
-Singleton* Singleton::singleton = NULL;  
-Singleton&amp; Singleton::GetInstance()  
-{  
-    if(singleton == NULL)  
-        singleton = new Singleton();  
-    else
-        cout&lt;&lt;"faiLure"&lt;&lt;endl;
-    return *singleton;  
-}  
-
-int main(int argc, char* argv[])
-{
-    Singleton &amp;a = Singleton::GetInstance();
-    cout&lt;&lt;a.val&lt;&lt;endl;
-    return 0;
-}</code></pre>
-<p></p>
+<pre><code>    a)　初始化：D[u,v]=A[u,v]
+    b)　For k:=1 to n
+            For i:=1 to n
+                For j:=1 to n
+                    If D[i,j]&gt;D[i,k]+D[k,j] Then
+                        D[i,j]:=D[i,k]+D[k,j];
+    c)　算法结束：D即为所有点对的最短路径矩阵</code></pre>
+<p><br></p>
 </div></div>
-<span style="float:left;"><a href="./9_C++_smart pointer.html">上一章</a></span>
+<span style="float:left;"><a href="./10_C++_Singleton.html">上一章</a></span>
 　　　　　　　　　　　　　　　　<a href="../C++_list.html">C++基础目录</a>
-<span style="float:right;"><a href="./11_C++_Floyd.html">下一章</a></span>
+<span style="float:right;"><a href="../C++_list.html">下一章</a></span>
 
 
       </section>

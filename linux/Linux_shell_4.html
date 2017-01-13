@@ -1,0 +1,66 @@
+﻿<!doctype html>
+<html>
+  <head>
+    <meta charset="GB18030">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>岚博基尼by wojiaoxulan</title>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-dark.css">
+    <script src="javascripts/respond.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+ <link rel="shortcut icon" href="../images/lan.jpg" type="image/vnd.microsoft.icon" />
+  </head> 
+  <body>
+      <div id="header" align="center">
+      <font size="6" >
+      	岚的博客
+      </font>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+      <section>
+       <div id="title">
+       <img src="../images/snow.jpg" height="200" width="200"  style="float:left"/> <a href="https://wojiaoxulan.github.io"><font size="4">
+      	&nbsp;&nbsp;博主：岚博基尼</font></a><br></br>
+      	<font size="2"> 
+      	&nbsp;&nbsp;格言：    学而时习之 锲而不舍<br></br>
+      	&nbsp;&nbsp;email：   437694562@qq.com<br></br>
+      	&nbsp;&nbsp;自我评价：教练！我想当码农！<br></br>
+      	</font>
+       <br clear="left"></br><hr>
+       </div>
+
+
+<h1><div align="center">shell十三问之第四问</div></h1>
+<br><span style="color:#E53333;">　　双引号“”和单引号''的区别？</span>
+<br>　　command line中的字符有的是普通的，有一些则是有特殊意义的，例如$，=，&gt;等等。而双引号和单引号则
+可以使得特殊普通号失去特殊作用，只作为普通字符使用。然而二者还是有区别的，具体如下：
+<br>　　‘’：hard quote，在单引号内所有的meta均被关闭。
+<br>　　“”：soft quote，大部分保留字符的meta会被关闭，但是某些会被保留，如$。
+<br>　　\ ：跳脱符，紧跟在跳脱符后面的meta才被关闭。
+<br><span style="color:#E53333;">　　常用的meta字符？</span>
+<br>　　=： 设定变量
+<br>　　$： 变量或运算替换
+<br>　　&gt;： 重导向stdout
+<br>　　&lt;： 重导向sdtin
+<br>　　|： 命令管线
+<br>　　&amp;： 重导向file descriptor，或将命令置于背景执行
+<br>　　()：将命令置于nested subshell执行，或用于运算或命令替换
+<br>　　{}：将命令置于non-named function中执行，或用于变量替换的界定范围
+<br>　　;： 在前一个命令结束时，忽略其返回值，继续执行下一个命令
+<br>　　&amp;&amp;：前一个命令返回TRUE时，则执行下一个命令
+<br>　　||：前一个命令返回FALSE，则执行下一个命令
+<br>　　！：执行history列表中的命令<p></p>
+</body>
+
+<br></br>
+<span style="float:left;"><a href="./Linux_shell_3.html">上一章</a></span>
+　　　　　　　　　　　　　　　　<a href="../Linux_list.html">Linux目录</a>
+<span style="float:right;"><a href="./Linux_shell_5.html">下一章</a></span>
+</section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+  
+  </body> 
+</html>

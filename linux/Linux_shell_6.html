@@ -1,0 +1,73 @@
+﻿<!doctype html>
+<html>
+  <head>
+    <meta charset="GB18030">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>岚博基尼by wojiaoxulan</title>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-dark.css">
+    <script src="javascripts/respond.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+ <link rel="shortcut icon" href="../images/lan.jpg" type="image/vnd.microsoft.icon" />
+  </head> 
+  <body>
+      <div id="header" align="center">
+      <font size="6" >
+      	岚的博客
+      </font>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+      <section>
+       <div id="title">
+       <img src="../images/snow.jpg" height="200" width="200"  style="float:left"/> <a href="https://wojiaoxulan.github.io"><font size="4">
+      	&nbsp;&nbsp;博主：岚博基尼</font></a><br></br>
+      	<font size="2"> 
+      	&nbsp;&nbsp;格言：    学而时习之 锲而不舍<br></br>
+      	&nbsp;&nbsp;email：   437694562@qq.com<br></br>
+      	&nbsp;&nbsp;自我评价：教练！我想当码农！<br></br>
+      	</font>
+       <br clear="left"></br><hr>
+       </div>
+
+
+<h1><div align="center">shell十三问之问问问</div></h1>
+<br><span style="color:#E53333;">　<b>做了一些练习题，有些问题，记录一下：</b></span>
+<br>　　当有一个sh文件，内有一个function名为lan。如下：
+<p></p>
+<pre><code>    #!/bin/bash
+    lan(){
+    num=0
+    while [ "$num" -le 15 ];
+    do
+        echo "num is $num"
+        num=$(($num+1))
+    done        
+    }</code></pre>
+<p>　　在command line中调用该函数的方式有两种:
+
+</p>
+<pre><code>    lan 3.sh (source/fork/exec)
+    lan ./3.sh (source/fork/exec)</code></pre>
+<p>　　但是如果不是调用sh文件的function，那么必须要加路径:
+
+</p>
+<pre><code>    ./3.sh (source/fork/exec)</code></pre>
+<p>　　1）为啥咧？
+<br>　　2）另外有的代码，刚开始出错，修改后还是报原来的错，
+新建一个sh文件依然没用。但是今天重新运行就没问题了，为啥咧？
+<br>　　3）还有一个，$n，n为数字，代表了传入的第n个参数。
+但是$($i)这种方式为什么不行呢？不能用变量置换吗？</p>
+</body>
+
+<br></br>
+<span style="float:left;"><a href="./Linux_shell_5.html">上一章</a></span>
+　　　　　　　　　　　　　　　　<a href="../Linux_list.html">Linux目录</a>
+<span style="float:right;"><a href="../Linux_list.html">下一章</a></span>
+</section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+  
+  </body> 
+</html>
